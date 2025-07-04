@@ -18,11 +18,14 @@ import java.util.List;
 public class NinjaModel {
 
     @Id //id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)//estrategia para id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//estrategia para id gera o id automatico
+    @Column(name = "id")
     private long id;
+    @Column(name = "nome")
     private String nome;
-    @Column(unique = true)
+    @Column(name = "email", unique = true)// deixa o email unico
     private String email;
+    @Column(name = "idade")
     private int idade;
 
     @ManyToOne //@ManyToOne um ninja tem apenas uma unica missão

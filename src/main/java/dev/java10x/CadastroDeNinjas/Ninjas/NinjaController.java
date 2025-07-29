@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 @RestController// mapeia o arquivo e avisa que é um controller
-@RequestMapping
+@RequestMapping("/ninjas") // mapeia a rota /ninjas
 public class NinjaController {
     @GetMapping("/boasvindas")
     public String boasVindas() {
@@ -27,19 +27,19 @@ public class NinjaController {
     }
     // Mostrar ninja por id (read)
 
-    @GetMapping("/todosID")
+    @GetMapping("/ListarID")
     public String mostrarNinjaPorId() {
         return "Mostrar ninja por ID";
     }
 
     //Alterar dados do ninja (update)
 
-    @PutMapping("/alterarID")
+    @PutMapping("/alterar")
     public String alterarNinja() {
         return "Ninja alterado com sucesso!";
     }
     // Deletar ninja (delete)
-    @DeleteMapping("/deletarID")
+    @DeleteMapping("/deletar")
     public String deletarNinja() {
         return "Ninja deletado com sucesso!";
     }

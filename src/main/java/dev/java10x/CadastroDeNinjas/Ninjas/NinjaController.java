@@ -34,11 +34,12 @@ public class NinjaController {
     public List<NinjaModel> listarNinjas() {
         return ninjaService.listarNinjas();
     }
-    // Mostrar ninja por id (read)
 
-    @GetMapping("/listarID")
-    public String mostrarNinjaPorId() {
-        return "Mostrar ninja por ID";
+    // Mostrar ninja por id (read)
+    @GetMapping("/listarID/{id}") // {id} é um parâmetro de rota, que o usuário pode passar na URL
+    // Exemplo: /listarID/1
+    public NinjaModel listarNinjasPorId(@PathVariable Long id) {// @PathVariable indica que o parâmetro id é uma variável de rota
+        return ninjaService.listarNinjaPorId(id);
     }
 
     //Alterar dados do ninja (update)

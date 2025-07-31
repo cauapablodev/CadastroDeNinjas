@@ -25,8 +25,11 @@ public class NinjaController {
     // Adicionar ninja (create)
 
     @PostMapping("/criar")
-    public String criarNinja() {
-        return "Ninja criado com sucesso!";
+    public NinjaModel criarNinja(@RequestBody NinjaModel ninja) {
+        // @RequestBody indica que o corpo da requisição contém os dados do ninja
+        // O Spring vai converter o JSON enviado na requisição para um objeto NinjaModel
+        return ninjaService.criarNinja(ninja);
+
     }
     // Mostrar todos os ninjas(read)
 

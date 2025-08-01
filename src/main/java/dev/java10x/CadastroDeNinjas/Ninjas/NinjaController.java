@@ -52,9 +52,9 @@ public class NinjaController {
         return "Ninja alterado com sucesso!";
     }
     // Deletar ninja (delete)
-    @DeleteMapping("/deletar")
-    public String deletarNinja() {
-        return "Ninja deletado com sucesso!";
+    @DeleteMapping("/deletar/{id}") // {id} é um parâmetro de rota, que o usuário pode passar na URL
+    public void deletarNinja(@PathVariable Long id) {
+        ninjaService.deletarNinja(id);
     }
 
 }

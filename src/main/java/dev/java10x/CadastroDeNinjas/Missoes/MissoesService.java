@@ -23,9 +23,13 @@ public class MissoesService {
         return missoesRepository.findAll();
     }
 
+    //Deletar missão
+    public void deletarMissao(Long id) {
+        missoesRepository.deleteById(id);
+    }
+
     //Alterar missão
 
-    //Deletar missão
 
 
 

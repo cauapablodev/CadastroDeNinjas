@@ -29,9 +29,9 @@ public class MissoesController {
     }
 
     //deletar missao
-    @DeleteMapping("/deletar")
-    public String deletarMissao() {
-        return "Missão deletada com sucesso!";
+    @DeleteMapping("/deletarPorId/{id}") // {id} é um parâmetro de rota, que o usuário pode passar na URL
+    public void deletarMissao(@PathVariable Long id) {
+        missoesService.deletarMissao(id);
     }
 
     //mostrar todas as missoes

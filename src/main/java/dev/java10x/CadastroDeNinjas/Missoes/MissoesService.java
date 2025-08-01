@@ -30,6 +30,14 @@ public class MissoesService {
 
     //Alterar missão
 
+    public MissoesModel alterarMissao(Long id, MissoesModel missaoAtualizada) {
+        if (missoesRepository.existsById(id)) {
+            missaoAtualizada.setId(id); // Define o ID da missão atualizada para o ID fornecido
+            return missoesRepository.save(missaoAtualizada); // Salva a missão atualizada no repositório e retorna o objeto salvo
+        }
+        return null; // Retorna null se a missão com o ID fornecido não existir
+    }
+
 
 
 

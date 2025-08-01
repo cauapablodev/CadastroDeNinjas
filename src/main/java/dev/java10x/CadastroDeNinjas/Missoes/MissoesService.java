@@ -2,6 +2,8 @@ package dev.java10x.CadastroDeNinjas.Missoes;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MissoesService {
     private MissoesRepository missoesRepository; // Repositório para acessar os dados das missões
@@ -15,11 +17,17 @@ public class MissoesService {
         return missoesRepository.save(missao); // Salva a missão no repositório e retorna o objeto salvo
     }
 
+    //Listar todas as missões
+
+    public List<MissoesModel> listarMissoes() {
+        return missoesRepository.findAll();
+    }
+
     //Alterar missão
 
     //Deletar missão
 
-    //Listar todas as missões
+
 
 
 }

@@ -1,7 +1,7 @@
 package dev.java10x.CadastroDeNinjas.Missoes;
 
-import dev.java10x.CadastroDeNinjas.Ninjas.NinjaModel;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 //mostra q isso é uma rota de controller
 @RestController
@@ -35,8 +35,8 @@ public class MissoesController {
     }
 
     //mostrar todas as missoes
-    @GetMapping("/listaMissoes")
-    public String mostrarTodasMissoes() {
-        return "Lista de todas as missões";
+    @GetMapping("/listar")
+    public List<MissoesModel> listarMissoes() {
+        return missoesService.listarMissoes();
     }
 }

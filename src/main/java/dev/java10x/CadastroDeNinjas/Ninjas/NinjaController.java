@@ -47,9 +47,9 @@ public class NinjaController {
 
     //Alterar dados do ninja (update)
 
-    @PutMapping("/alterar")
-    public String alterarNinja() {
-        return "Ninja alterado com sucesso!";
+    @PutMapping("/alterar/{id}") // {id} é um parâmetro de rota, que o usuário pode passar na URL
+    public NinjaModel alterarNinja(@PathVariable Long id, @RequestBody NinjaModel ninjaAtualizado) {
+        return ninjaService.atualizarNinja(id, ninjaAtualizado);
     }
     // Deletar ninja (delete)
     @DeleteMapping("/deletar/{id}") // {id} é um parâmetro de rota, que o usuário pode passar na URL

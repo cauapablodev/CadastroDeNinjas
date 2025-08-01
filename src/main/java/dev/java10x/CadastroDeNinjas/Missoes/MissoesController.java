@@ -1,5 +1,6 @@
 package dev.java10x.CadastroDeNinjas.Missoes;
 
+import dev.java10x.CadastroDeNinjas.Ninjas.NinjaModel;
 import org.springframework.web.bind.annotation.*;
 
 //mostra q isso é uma rota de controller
@@ -7,10 +8,18 @@ import org.springframework.web.bind.annotation.*;
 // para falar que vai mapear a rota
 @RequestMapping("/missoes")
 public class MissoesController {
-    //Manda
+
+    private MissoesService missoesService; // Serviço para acessar os dados das missões
+
+    public MissoesController(MissoesService missoesService) { // Construtor que recebe o serviço de missões
+        this.missoesService = missoesService;
+    }
+
     @PostMapping("/criar")
-    public String criarMissao() {
-        return "Missão criada com sucesso!";
+    public MissoesModel criarMissao(@RequestBody MissoesModel missao) {
+        // @RequestBody indica que o corpo da requisição contém os dados da missão
+        // O Spring vai converter o JSON enviado na requisição para um objeto MissoesModel
+        return missoesService.criarMissao(missao);
     }
 
     //Alterar missao
@@ -26,7 +35,7 @@ public class MissoesController {
     }
 
     //mostrar todas as missoes
-    @GetMapping("/listaDeNinjas")
+    @GetMapping("/listaMissoes")
     public String mostrarTodasMissoes() {
         return "Lista de todas as missões";
     }

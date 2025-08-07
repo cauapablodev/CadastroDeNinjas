@@ -1,5 +1,6 @@
 package dev.java10x.CadastroDeNinjas.Missoes;
 
+import dev.java10x.CadastroDeNinjas.Ninjas.NinjaDTO;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -16,16 +17,16 @@ public class MissoesController {
     }
 
     @PostMapping("/criar")
-    public MissoesModel criarMissao(@RequestBody MissoesModel missao) {
+    public MissoesDTO criarMissao(@RequestBody MissoesDTO missao) {
         // @RequestBody indica que o corpo da requisição contém os dados da missão
         // O Spring vai converter o JSON enviado na requisição para um objeto MissoesModel
         return missoesService.criarMissao(missao);
     }
 
     //Alterar missao
-    @PutMapping("/alterar")
-    public String alterarMissao() {
-        return "Missão alterada com sucesso!";
+    @PutMapping("/alterarID/{id}")
+    public MissoesDTO alterarMissao(@PathVariable Long id, @RequestBody MissoesDTO missoesAtualizado) {
+        return missoesService.alterarMissao(id, missoesAtualizado);
     }
 
     //deletar missao
@@ -36,7 +37,7 @@ public class MissoesController {
 
     //mostrar todas as missoes
     @GetMapping("/listar")
-    public List<MissoesModel> listarMissoes() {
+    public List<MissoesDTO> listarMissoes() {
         return missoesService.listarMissoes();
     }
 

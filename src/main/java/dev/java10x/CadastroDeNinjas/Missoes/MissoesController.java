@@ -40,4 +40,10 @@ public class MissoesController {
     public List<MissoesDTO> listarMissoes() {
         return missoesService.listarMissoes();
     }
+
+    //Alterar missão
+    @PutMapping("/alterar/{id}") // {id} é um parâmetro de rota, que o usuário pode passar na URL
+    public MissoesModel alterarMissao(@PathVariable Long id, @RequestBody MissoesModel missaoAtualizada) {
+        return missoesService.alterarMissao(id, missaoAtualizada);
+    }
 }

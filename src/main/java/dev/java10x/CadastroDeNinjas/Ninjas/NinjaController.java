@@ -25,30 +25,27 @@ public class NinjaController {
     // Adicionar ninja (create)
 
     @PostMapping("/criar")
-    public NinjaModel criarNinja(@RequestBody NinjaModel ninja) {
-        // @RequestBody indica que o corpo da requisição contém os dados do ninja
-        // O Spring vai converter o JSON enviado na requisição para um objeto NinjaModel
+    public NinjaDTO criarNinja(@RequestBody NinjaDTO ninja) {
         return ninjaService.criarNinja(ninja);
-
     }
     // Mostrar todos os ninjas(read)
 
     @GetMapping("/listar")
-    public List<NinjaModel> listarNinjas() {
+    public List<NinjaDTO> listarNinjas() {
         return ninjaService.listarNinjas();
     }
 
     // Mostrar ninja por id (read)
     @GetMapping("/listarID/{id}") // {id} é um parâmetro de rota, que o usuário pode passar na URL
     // Exemplo: /listarID/1
-    public NinjaModel listarNinjasPorId(@PathVariable Long id) {// @PathVariable indica que o parâmetro id é uma variável de rota
+    public NinjaDTO listarNinjasPorId(@PathVariable Long id) {// @PathVariable indica que o parâmetro id é uma variável de rota
         return ninjaService.listarNinjaPorId(id);
     }
 
     //Alterar dados do ninja (update)
 
     @PutMapping("/alterar/{id}") // {id} é um parâmetro de rota, que o usuário pode passar na URL
-    public NinjaModel alterarNinja(@PathVariable Long id, @RequestBody NinjaModel ninjaAtualizado) {
+    public NinjaDTO alterarNinja(@PathVariable Long id, @RequestBody NinjaDTO ninjaAtualizado) {
         return ninjaService.atualizarNinja(id, ninjaAtualizado);
     }
     // Deletar ninja (delete)
